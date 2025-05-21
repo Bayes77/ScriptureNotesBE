@@ -2,15 +2,12 @@
 {
     public class Note
     {
-        int Id { get; set; }
-        string? Uid { get; set; }
-        string? Title { get; set; }
-
-        string? Content { get; set; }
-        DateTime CreatedAt { get; set; }
-        public NoteScripture? NoteScripture { get; set; }
-        public List<Tag>? Tags { get; set; }
+        public int Id { get; set; }
+        public string Uid { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public User? User { get; set; }
         public List<NoteTag>? NoteTags { get; set; }
-
     }
 }
