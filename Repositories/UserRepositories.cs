@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ScriptureNotesBE.Repositories
 {
-    public class UserRepositories : IUserRepository
+    public class UserRepository : IUserRepository
     {
         public readonly ScriptureNoteBEDbContext _context;
-        public UserRepositories(ScriptureNoteBEDbContext context)
+        public UserRepository(ScriptureNoteBEDbContext context)
         {
             _context = context;
         }

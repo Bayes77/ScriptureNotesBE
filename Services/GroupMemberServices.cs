@@ -12,7 +12,7 @@ namespace ScriptureNotesBE.Services
         }
         public async Task<List<GroupMember>> GetGroupMemberById(int id)
         {
-            return await _groupMemberRepository.GetGroupMemberById(id);
+            return await _groupMemberRepository.GetGroupMemberByIdAsync(id);
         }
         public async Task<List<GroupMember>> GetGroupMembers()
         {

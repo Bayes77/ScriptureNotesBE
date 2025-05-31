@@ -15,7 +15,7 @@ namespace ScriptureNotesBE.Repositories
         {
             _context = context;
         }
-        public async Task<List<GroupMember>> GetGroupMemberById(int id)
+        public async Task<List<GroupMember>> GetGroupMemberByIdAsync(int id)
         {
             return await _context.GroupMembers.Where(g => g.Id == id).ToListAsync();
         }

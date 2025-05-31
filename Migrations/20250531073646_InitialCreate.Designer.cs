@@ -12,7 +12,7 @@ using ScriptureNotesBE.Data;
 namespace ScriptureNotesBE.Migrations
 {
     [DbContext(typeof(ScriptureNoteBEDbContext))]
-    [Migration("20250526021106_InitialCreate")]
+    [Migration("20250531073646_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -60,36 +60,36 @@ namespace ScriptureNotesBE.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1362),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(2618),
                             GroupId = 11,
-                            Joined_At = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1584),
+                            Joined_At = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(2936),
                             Uid = "one",
                             UserId = 1111
                         },
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1801),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3214),
                             GroupId = 12,
-                            Joined_At = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1801),
+                            Joined_At = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3215),
                             Uid = "two",
                             UserId = 2222
                         },
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1803),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3216),
                             GroupId = 13,
-                            Joined_At = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1803),
+                            Joined_At = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3216),
                             Uid = "two",
                             UserId = 1111
                         },
                         new
                         {
                             Id = 40,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1804),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3218),
                             GroupId = 14,
-                            Joined_At = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1804),
+                            Joined_At = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3218),
                             Uid = "one",
                             UserId = 2222
                         });
@@ -132,7 +132,7 @@ namespace ScriptureNotesBE.Migrations
                         {
                             Id = 111,
                             Content = "This is the first note.",
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4720),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5176),
                             Title = "Note 1",
                             Uid = "one",
                             UserId = 1111
@@ -141,7 +141,7 @@ namespace ScriptureNotesBE.Migrations
                         {
                             Id = 222,
                             Content = "This is the second note.",
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4951),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5524),
                             Title = "Note 2",
                             Uid = "two",
                             UserId = 2222
@@ -150,7 +150,7 @@ namespace ScriptureNotesBE.Migrations
                         {
                             Id = 333,
                             Content = "This is the third note.",
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4952),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5526),
                             Title = "Note 3",
                             Uid = "one",
                             UserId = 1111
@@ -206,16 +206,13 @@ namespace ScriptureNotesBE.Migrations
 
             modelBuilder.Entity("ScriptureNotesBE.Models.NoteTag", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
                     b.Property<int>("NoteId")
                         .HasColumnType("integer");
 
                     b.Property<int>("TagId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Id")
                         .HasColumnType("integer");
 
                     b.Property<string>("Uid")
@@ -224,9 +221,7 @@ namespace ScriptureNotesBE.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("NoteId");
+                    b.HasKey("NoteId", "TagId");
 
                     b.HasIndex("TagId");
 
@@ -237,33 +232,33 @@ namespace ScriptureNotesBE.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 101,
                             NoteId = 111,
-                            TagId = 100
+                            TagId = 100,
+                            Id = 101
                         },
                         new
                         {
-                            Id = 202,
                             NoteId = 111,
-                            TagId = 200
+                            TagId = 200,
+                            Id = 202
                         },
                         new
                         {
-                            Id = 303,
                             NoteId = 222,
-                            TagId = 300
+                            TagId = 300,
+                            Id = 303
                         },
                         new
                         {
-                            Id = 404,
                             NoteId = 222,
-                            TagId = 400
+                            TagId = 400,
+                            Id = 404
                         },
                         new
                         {
-                            Id = 505,
                             NoteId = 333,
-                            TagId = 500
+                            TagId = 500,
+                            Id = 505
                         });
                 });
 
@@ -406,35 +401,35 @@ namespace ScriptureNotesBE.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(7928),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(8912),
                             Description = "This is group 1",
                             Name = "Group 1"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8165),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9230),
                             Description = "This is group 2",
                             Name = "Group 2"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8166),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9231),
                             Description = "This is group 3",
                             Name = "Group 3"
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8167),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9232),
                             Description = "This is group 4",
                             Name = "Group 4"
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8168),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9233),
                             Description = "This is group 5",
                             Name = "Group 5"
                         });
@@ -465,31 +460,31 @@ namespace ScriptureNotesBE.Migrations
                         new
                         {
                             Id = 100,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4441),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6015),
                             Name = "Faith"
                         },
                         new
                         {
                             Id = 200,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4748),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6269),
                             Name = "Doctrine"
                         },
                         new
                         {
                             Id = 300,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4749),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6270),
                             Name = "Love"
                         },
                         new
                         {
                             Id = 400,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4750),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6271),
                             Name = "Repentence"
                         },
                         new
                         {
                             Id = 500,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4751),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6272),
                             Name = "Peace"
                         });
                 });
@@ -522,7 +517,7 @@ namespace ScriptureNotesBE.Migrations
                         new
                         {
                             Id = 1111,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(1408),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(1622),
                             Email = "user1@gmail.com",
                             Uid = "one",
                             UserName = "user1"
@@ -530,7 +525,7 @@ namespace ScriptureNotesBE.Migrations
                         new
                         {
                             Id = 2222,
-                            CreatedAt = new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(1680),
+                            CreatedAt = new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(1901),
                             Email = "user2@gmail.com",
                             Uid = "two",
                             UserName = "user2"
@@ -595,7 +590,7 @@ namespace ScriptureNotesBE.Migrations
                         .IsRequired();
 
                     b.HasOne("ScriptureNotesBE.Models.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("NoteTag")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -622,6 +617,11 @@ namespace ScriptureNotesBE.Migrations
             modelBuilder.Entity("ScriptureNotesBE.Models.StudyGroup", b =>
                 {
                     b.Navigation("GroupMembers");
+                });
+
+            modelBuilder.Entity("ScriptureNotesBE.Models.Tag", b =>
+                {
+                    b.Navigation("NoteTag");
                 });
 
             modelBuilder.Entity("ScriptureNotesBE.Models.User", b =>

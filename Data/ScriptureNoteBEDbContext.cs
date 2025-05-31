@@ -51,6 +51,19 @@ namespace ScriptureNotesBE.Data
             modelBuilder.Entity<Tag>().HasData(TagData.Tags);
             modelBuilder.Entity<Scripture>().HasData(ScriptureData.Scriptures);
             modelBuilder.Entity<NoteScripture>().HasData(NoteScriptureData.NoteScriptures);
+
+            modelBuilder.Entity<NoteTag>()
+                .HasKey(nt => new { nt.NoteId, nt.TagId });
+
+            modelBuilder.Entity<NoteTag>()
+                .HasOne(nt => nt.Note)
+                .WithMany(n => n.NoteTags)
+                .HasForeignKey(nt => nt.NoteId);
+
+            modelBuilder.Entity<NoteTag>()
+                .HasOne(nt => nt.Tag)
+                .WithMany(t => t.NoteTag)
+                .HasForeignKey(nt => nt.TagId);
         }
     }
 }

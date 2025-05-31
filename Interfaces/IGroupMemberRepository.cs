@@ -4,7 +4,7 @@ namespace ScriptureNotesBE.Interfaces
 {
     public interface IGroupMemberRepository
     {
-        Task<List<GroupMember>> GetGroupMemberById(int id);
+        Task<List<GroupMember>> GetGroupMemberByIdAsync(int id);
         Task<List<GroupMember>> GetGroupMembers();
        
         Task<GroupMember> AddGroupMember(GroupMember groupMember);

@@ -158,16 +158,15 @@ namespace ScriptureNotesBE.Migrations
                 name: "NoteTags",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Uid = table.Column<string>(type: "text", nullable: true),
                     NoteId = table.Column<int>(type: "integer", nullable: false),
                     TagId = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false),
+                    Uid = table.Column<string>(type: "text", nullable: true),
                     UserId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NoteTags", x => x.Id);
+                    table.PrimaryKey("PK_NoteTags", x => new { x.NoteId, x.TagId });
                     table.ForeignKey(
                         name: "FK_NoteTags_Notes_NoteId",
                         column: x => x.NoteId,
@@ -214,11 +213,11 @@ namespace ScriptureNotesBE.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "Name", "Uid" },
                 values: new object[,]
                 {
-                    { 11, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(7928), "This is group 1", "Group 1", null },
-                    { 12, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8165), "This is group 2", "Group 2", null },
-                    { 13, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8166), "This is group 3", "Group 3", null },
-                    { 14, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8167), "This is group 4", "Group 4", null },
-                    { 15, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(8168), "This is group 5", "Group 5", null }
+                    { 11, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(8912), "This is group 1", "Group 1", null },
+                    { 12, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9230), "This is group 2", "Group 2", null },
+                    { 13, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9231), "This is group 3", "Group 3", null },
+                    { 14, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9232), "This is group 4", "Group 4", null },
+                    { 15, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(9233), "This is group 5", "Group 5", null }
                 });
 
             migrationBuilder.InsertData(
@@ -226,11 +225,11 @@ namespace ScriptureNotesBE.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "Uid" },
                 values: new object[,]
                 {
-                    { 100, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4441), "Faith", null },
-                    { 200, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4748), "Doctrine", null },
-                    { 300, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4749), "Love", null },
-                    { 400, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4750), "Repentence", null },
-                    { 500, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(4751), "Peace", null }
+                    { 100, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6015), "Faith", null },
+                    { 200, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6269), "Doctrine", null },
+                    { 300, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6270), "Love", null },
+                    { 400, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6271), "Repentence", null },
+                    { 500, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(6272), "Peace", null }
                 });
 
             migrationBuilder.InsertData(
@@ -238,8 +237,8 @@ namespace ScriptureNotesBE.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "Uid", "UserName" },
                 values: new object[,]
                 {
-                    { 1111, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(1408), "user1@gmail.com", "one", "user1" },
-                    { 2222, new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(1680), "user2@gmail.com", "two", "user2" }
+                    { 1111, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(1622), "user1@gmail.com", "one", "user1" },
+                    { 2222, new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(1901), "user2@gmail.com", "two", "user2" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,10 +246,10 @@ namespace ScriptureNotesBE.Migrations
                 columns: new[] { "Id", "CreatedAt", "GroupId", "Joined_At", "Uid", "UserId" },
                 values: new object[,]
                 {
-                    { 10, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1362), 11, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1584), "one", 1111 },
-                    { 20, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1801), 12, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1801), "two", 2222 },
-                    { 30, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1803), 13, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1803), "two", 1111 },
-                    { 40, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1804), 14, new DateTime(2025, 5, 26, 2, 11, 3, 511, DateTimeKind.Utc).AddTicks(1804), "one", 2222 }
+                    { 10, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(2618), 11, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(2936), "one", 1111 },
+                    { 20, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3214), 12, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3215), "two", 2222 },
+                    { 30, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3216), 13, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3216), "two", 1111 },
+                    { 40, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3218), 14, new DateTime(2025, 5, 31, 7, 36, 44, 602, DateTimeKind.Utc).AddTicks(3218), "one", 2222 }
                 });
 
             migrationBuilder.InsertData(
@@ -258,9 +257,9 @@ namespace ScriptureNotesBE.Migrations
                 columns: new[] { "Id", "Content", "CreatedAt", "Title", "Uid", "UserId" },
                 values: new object[,]
                 {
-                    { 111, "This is the first note.", new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4720), "Note 1", "one", 1111 },
-                    { 222, "This is the second note.", new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4951), "Note 2", "two", 2222 },
-                    { 333, "This is the third note.", new DateTime(2025, 5, 26, 2, 11, 3, 510, DateTimeKind.Utc).AddTicks(4952), "Note 3", "one", 1111 }
+                    { 111, "This is the first note.", new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5176), "Note 1", "one", 1111 },
+                    { 222, "This is the second note.", new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5524), "Note 2", "two", 2222 },
+                    { 333, "This is the third note.", new DateTime(2025, 5, 31, 7, 36, 44, 601, DateTimeKind.Utc).AddTicks(5526), "Note 3", "one", 1111 }
                 });
 
             migrationBuilder.InsertData(
@@ -275,14 +274,14 @@ namespace ScriptureNotesBE.Migrations
 
             migrationBuilder.InsertData(
                 table: "NoteTags",
-                columns: new[] { "Id", "NoteId", "TagId", "Uid", "UserId" },
+                columns: new[] { "NoteId", "TagId", "Id", "Uid", "UserId" },
                 values: new object[,]
                 {
-                    { 101, 111, 100, null, null },
-                    { 202, 111, 200, null, null },
-                    { 303, 222, 300, null, null },
-                    { 404, 222, 400, null, null },
-                    { 505, 333, 500, null, null }
+                    { 111, 100, 101, null, null },
+                    { 111, 200, 202, null, null },
+                    { 222, 300, 303, null, null },
+                    { 222, 400, 404, null, null },
+                    { 333, 500, 505, null, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -304,11 +303,6 @@ namespace ScriptureNotesBE.Migrations
                 name: "IX_NoteScriptures_ScriptureId",
                 table: "NoteScriptures",
                 column: "ScriptureId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NoteTags_NoteId",
-                table: "NoteTags",
-                column: "NoteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NoteTags_TagId",

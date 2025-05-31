@@ -9,6 +9,7 @@
         public string Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public User? User { get; set; }
-        public List<NoteTag>? NoteTags { get; set; }
+       
+        public ICollection<NoteTag>? NoteTags { get; set; } 
     }
 }
