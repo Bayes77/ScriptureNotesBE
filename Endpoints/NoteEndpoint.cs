@@ -54,7 +54,7 @@ namespace ScriptureNotesBE.Endpoints
             app.MapDelete("/notes/{id}", async (int id, INoteServices noteServices) =>
             {
                 var deltedNote = await noteServices.DeleteNote(id);
-                return Results.NotFound();
+                return Results.NoContent();
             })
             .WithName("DeleteNote")
             .WithOpenApi()

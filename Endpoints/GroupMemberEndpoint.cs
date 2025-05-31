@@ -56,7 +56,7 @@ namespace ScriptureNotesBE.Endpoints
             group.MapDelete("/groupmembers/{id}", async (int id, IGroupMemberServices groupMemberServices) =>
             {
                 var deletedGroupMember = await groupMemberServices.DeleteGroupMember(id);
-                return Results.NotFound();
+                return Results.NoContent();
             })
             .WithName("DeleteGroupMember")
             .WithOpenApi()

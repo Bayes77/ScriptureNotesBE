@@ -76,6 +76,20 @@ Each resource supports standard CRUD operations. See the Swagger UI for detailed
 - To seed new data, modify the relevant file in `Data/`.
 - For business logic, use the `Services/` layer.
 
+## Resources
+
+### Links
+- [ERD](https://dbdiagram.io/d/ScriptureNote-682497705b2fc4582f94eab5)
+- [API Documentation (Postman)](https://documenter.getpostman.com/view/36648839/2sB2qgddX8)
+- [Wireframe](https://drive.google.com/file/d/1k1fZ8dRZyu3xdijEwmtQWR5XgzyNC6-k/view?usp=sharing)
+- [Presentation Slides](https://docs.google.com/presentation/d/19hGiCwdwRwy3KQjgZlP4u0YeiR3gj8JLdu7pvCc30jo/edit?usp=sharing)
+
+### Loom Video
+- [Project Walkthrough (Loom Artifacts and Unit Testing)](https://www.loom.com/share/f503b73b646c4a1d9b1c97fed2d96f5a?sid=a3778ea2-f700-4fc1-be65-6ea40817fa33)
+- [Project Walkthrough (Loom Postman Calls)](https://www.loom.com/share/46fd3610ef06475c9d16287b1fa865d1?sid=92e58c54-09e9-4727-a4ec-4e7804957551)
+
+---
+
 ## License
 
 This project is licensed under the MIT License.
