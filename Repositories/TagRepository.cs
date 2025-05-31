@@ -18,10 +18,10 @@ namespace ScriptureNotesBE.Repositories
         {
             return await _context.Tags.ToListAsync();
         }
-        public async Task<Tag> GetTagById(int id)
-        {
-            return await _context.Tags.FindAsync(id);
-        }
+        //public async Task<Tag> GetTagById(int id)
+        //{
+        //    return await _context.Tags.FindAsync(id);
+        //}
         public async Task<Tag> AddTag(Tag tag)
         {
             _context.Tags.Add(tag);
@@ -43,7 +43,7 @@ namespace ScriptureNotesBE.Repositories
         public async Task<Tag> DeleteTag(int id)
         {
             var tag = await _context.Tags.FindAsync(id);
-            if (tag == null) throw new Exception("Tag not found");
+            if (tag == null)
             {
                 return null;
             }
@@ -52,14 +52,15 @@ namespace ScriptureNotesBE.Repositories
             return tag;
         }
 
-        Task<List<Tag>> ITagRepository.GetTagById(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task<List<Tag>> GetTagsByUserId(string Uid)
+        //public async Task<List<Tag>> GetTagsByUserId(int id)
+        //{
+        //    return await _context.Tags.Where(t => t.Id == id).ToListAsync();
+        //}
+
+        public async Task<List<Tag>> GetTagById(int id)
         {
-            return await _context.Tags.Where(t => t.Uid == Uid).ToListAsync();
+            return await _context.Tags.Where(t => t.Id == id).ToListAsync();
         }
     }
 }

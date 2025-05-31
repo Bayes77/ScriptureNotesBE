@@ -48,13 +48,13 @@ namespace ScriptureNotesBE.Repositories
         public async Task<Note> DeleteNote(int id)
         {
             var nToDelete = await _context.Notes.FindAsync(id);
-            if (nToDelete != null) throw new Exception("Note not found");
+            if (nToDelete != null)
             {
                 _context.Notes.Remove(nToDelete);
                 await _context.SaveChangesAsync();
                 return nToDelete;
             }
-           
+            return null; 
         }
 
        

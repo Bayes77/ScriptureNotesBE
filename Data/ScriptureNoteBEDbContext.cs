@@ -3,9 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ScriptureNotesBE.Data
 {
-    public class ScriptureNoteBEDbContext :DbContext
+    public class ScriptureNoteBEDbContext : DbContext
     {
-       
         public DbSet<User> Users { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<NoteTag> NoteTags { get; set; }
@@ -24,22 +23,25 @@ namespace ScriptureNotesBE.Data
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Notes)
                 .WithOne(n => n.User)
-                .HasForeignKey(n => n.Uid);
+                .HasForeignKey(n => n.UserId); // Fixed property name to match convention  
+
             modelBuilder.Entity<User>()
                 .HasMany(u => u.GroupMembers)
                 .WithOne(gm => gm.User)
-                .HasForeignKey(gm => gm.Uid);
+                .HasForeignKey(gm => gm.UserId);
+
             modelBuilder.Entity<Note>()
                 .HasMany(n => n.NoteTags)
                 .WithOne(nt => nt.Note)
                 .HasForeignKey(nt => nt.NoteId);
+
             modelBuilder.Entity<StudyGroup>()
                 .HasMany(sg => sg.GroupMembers)
                 .WithOne(gm => gm.StudyGroup)
                 .HasForeignKey(gm => gm.GroupId);
+
             modelBuilder.Entity<NoteScripture>()
                 .HasKey(ns => new { ns.NoteId, ns.ScriptureId });
-
 
             modelBuilder.Entity<NoteTag>().HasData(NoteTagData.NoteTags);
             modelBuilder.Entity<User>().HasData(UserData.Users);

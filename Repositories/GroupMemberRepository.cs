@@ -54,13 +54,13 @@ namespace ScriptureNotesBE.Repositories
         public async Task<GroupMember> DeleteGroupMember(int id)
         {
             var gmToDelete = await _context.GroupMembers.FindAsync(id);
-            if (gmToDelete != null) throw new Exception("GroupMember not found");
+            if (gmToDelete != null)
             {
                 _context.GroupMembers.Remove(gmToDelete);
                 await _context.SaveChangesAsync();
                 return gmToDelete;
             }
-        
+            return null; 
         }
     }
 }

@@ -8,9 +8,8 @@ namespace ScriptureNotesBE.Interfaces
         Task<List<User>> GetUsers();
         Task<User> AddUser(User user);
         Task<User> UpdateUser(int id, User user);
-        Task<User> DeleteUser(string id);
-        
-       
-        
+        Task<User> DeleteUser(int id);
+        Task<User> GetUserById(int id);
+        Task<User> UpdateUser(string uid, User user);
     }
 }

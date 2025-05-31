@@ -49,7 +49,7 @@ namespace ScriptureNotesBE.Repositories
         public async Task<StudyGroup> DeleteStudyGroup(int id)
         {
             var studyGroup = await _context.StudyGroups.FindAsync(id);
-            if (studyGroup == null) throw new Exception("Study group not found");
+            if (studyGroup == null) 
             {
                 return null;
             }

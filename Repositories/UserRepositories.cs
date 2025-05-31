@@ -25,7 +25,7 @@ namespace ScriptureNotesBE.Repositories
         public async Task<User> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            if (user == null) throw new Exception("User not found");
+            if (user == null) 
             {
                 return null;
             }
@@ -73,16 +73,26 @@ namespace ScriptureNotesBE.Repositories
         }
 
 
-        public async Task<User> DeleteUser(string id)
-        {
-            var uToDelete = await _context.Users.FindAsync(id);
-            if (uToDelete == null) throw new Exception("User not found");
-            _context.Users.Remove(uToDelete);
-            await _context.SaveChangesAsync();
-            return uToDelete; 
-        }
+        //public async Task<User> DeleteUser(int id)
+        //{
+        //    var uToDelete = await _context.Users.FindAsync(id);
+        //    if (uToDelete == null) throw new Exception("User not found");
+        //    _context.Users.Remove(uToDelete);
+        //    await _context.SaveChangesAsync();
+        //    return uToDelete; 
+        //}
 
         public Task<List<User>> GetUserById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<User> IUserRepository.GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> UpdateUser(string uid, User user)
         {
             throw new NotImplementedException();
         }

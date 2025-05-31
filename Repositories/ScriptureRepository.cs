@@ -44,7 +44,7 @@ namespace ScriptureNotesBE.Repositories
         public async Task<Scripture> DeleteScripture(int id)
         {
             var scripture = await _context.Scriptures.FindAsync(id);
-            if (scripture != null) throw new Exception("Scripture not found");
+            if (scripture != null) 
             {
                 _context.Scriptures.Remove(scripture);
                 await _context.SaveChangesAsync();
